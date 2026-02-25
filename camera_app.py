@@ -30,14 +30,23 @@ def build_and_load_model(model_path):
     return model
 
 # --- 2. INITIALIZATION ---
+# 0 is usually the first camera found (often iPhone/Continuity on macOS)
+# 1 is often the built-in FaceTime camera
+CAMERA_INDEX = 0 
+
 # Make sure your file is named exactly 'cat_dog_model.keras' or change this string:
 MODEL_NAME = 'cat_dog_model.keras' 
 model = build_and_load_model(MODEL_NAME)
 
-# Open the webcam (0 is usually the built-in FaceTime camera)
-cap = cv2.VideoCapture(0)
+# Open the webcam
+cap = cv2.VideoCapture(CAMERA_INDEX)
 
-print("Starting camera... Press 'q' to quit.")
+if not cap.isOpened():
+    print(f"ERROR: Could not open camera with index {CAMERA_INDEX}.")
+    print("TIP: Try changing CAMERA_INDEX to 1 in the script.")
+    exit()
+
+print(f"Starting camera (index {CAMERA_INDEX})... Press 'q' to quit.")
 
 # --- 3. MAIN LOOP ---
 while True:

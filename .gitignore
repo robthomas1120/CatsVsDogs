@@ -1,0 +1,24 @@
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# macOS System Files
+.DS_Store
+
+# Large Model Files (Optional but recommended)
+# *.keras
+# *.h5
+
+# Local IDE settings
+.vscode/
+.idea/
